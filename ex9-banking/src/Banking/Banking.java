@@ -40,7 +40,7 @@ public class Banking {
             saldo = 0.0;
             chequeEspecial -= resto;
             chequeEspecialUsado += resto;
-            AccountView.consultarChequeEspecialUtilizado(account);
+            AccountView.consultarChequeEspecialUsado(account);
         } else {
             System.out.println("Saldo insuficiente.");
         }

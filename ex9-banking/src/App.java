@@ -18,6 +18,12 @@ import Banking.AccountView;
       - Se findAccount() não encontrar o numberAccount passado como parâmetro na lista de contas
       - o erro deve ser tratado e o usuário deve ser informado.
     4 - O criarConta() deve chamar o metodo addAccount de BankingService.
+    5 - É necessário verificar quando houver saldo na conta suficiente para haver o desconto de 20%
+      - do Cheque Especial Usado.
+      - Atualmente o desconto é realizado somente sobre o depósito e somente se o valor do depósito for
+      - superior ou igual aos 20%, dessa forma, caso o usuário sempre deposite valores menores,
+      - esses valore serão somados ao saldo sem nunca pagar o cheque especial mesmo que o saldo
+      - já seja superior ao devido.
 
 
 */
@@ -48,6 +54,7 @@ public class App {
                     account = criarConta();
                     System.out.println("Conta Criada com Sucesso!");
                     AccountView.visaoGeral(account);
+                    break;
                 case 3:
                     if (account != null) {
                         AccountView.consultarChequeEspecial(account);
