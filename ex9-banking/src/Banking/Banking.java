@@ -27,9 +27,9 @@ public class Banking {
             chequeEspecial += calcDescontoChequeEspecial(chequeEspecialUsado);
             chequeEspecialUsado -= calcDescontoChequeEspecial(chequeEspecialUsado);
             this.saldo += resto;
-        } 
+        }
 
-        AccountView.consultarSaldo(account);
+        AccountView.visaoGeral(account);
     }
 
     public void sacar(Banking account, Double saque) {
@@ -40,11 +40,12 @@ public class Banking {
             saldo = 0.0;
             chequeEspecial -= resto;
             chequeEspecialUsado += resto;
+            AccountView.consultarChequeEspecialUtilizado(account);
         } else {
             System.out.println("Saldo insuficiente.");
         }
 
-        AccountView.consultarSaldo(account);
+        AccountView.visaoGeral(account);
     }
 
     private Double calcChequeEspecial(Double depositoInicial) {

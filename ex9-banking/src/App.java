@@ -2,20 +2,86 @@ import java.util.Scanner;
 import Banking.Banking;
 import Banking.AccountView;
 
+/*
+    PRÓXIMOS PASSOS...:
+    1 - Implementar BankingService
+      - O usuário deve poder alternar entre contas, isto é, escolher uma conta de uma lista
+      - na qual poderá realizar as ações do menu
+      - DICA: utilizar numberAccount já existente em Banking
+    2 - Todas as informações da conta devem manter-se em Banking.
+      - BankingService servirá apenas, por enquanto, para podermos acessar diferentes contas
+      - com diferentes valores.
+    3 - Implementar opção "Acessar conta"
+      - Essa opção irá alterar o valor de atualAccount (agora account)
+      - Assim como atualmente, cada opção do case verifica se existe conta criada, é necessário verificar
+      - se a lista de contas não está vazia para prosseguir.
+      - Se findAccount() não encontrar o numberAccount passado como parâmetro na lista de contas
+      - o erro deve ser tratado e o usuário deve ser informado.
+    4 - O criarConta() deve chamar o metodo addAccount de BankingService.
+
+
+*/
+
+
+
 public class App {
     private static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
+        var option = -1;
+        Banking account = null; //será atualAccount, seu valor mudará conforme escolha do usuário, baseando-se em NumberAccount.
 
-        //criar menu
-        Banking account1 = criarConta();
+        do {
+            System.out.println("===============MENU===============");
+            System.out.println("1 - Criar conta");
+            System.out.println("2 - Acessar conta");
+            System.out.println("3 - Consultar Cheque Especial");
+            System.out.println("4 - Depositar");
+            System.out.println("5 - Sacar");
+            System.out.println("6 - Pagar boleto");
+            System.out.println("0 - Sair");
 
-        System.out.println("Informe o valor do saque: ");
-        account1.sacar(account1, scan.nextDouble());
+            option = scan.nextInt();
 
-        System.out.println("Informe o valor do deposito: ");
-        account1.depositar(account1, scan.nextDouble());
+            switch (option) {
+                case 1:
+                    account = criarConta();
+                    System.out.println("Conta Criada com Sucesso!");
+                    AccountView.visaoGeral(account);
+                case 3:
+                    if (account != null) {
+                        AccountView.consultarChequeEspecial(account);
+                    } else {
+                        System.out.println("Nenhuma conta foi encontrada! Crie uma conta primeiro!");
+                    }
+                    break;
+                case 4:
+                    if (account != null) {
+                        System.out.println("Informe o valor do depósito: ");
+                        account.depositar(account, scan.nextDouble());
+                    } else {
+                        System.out.println("Nenhuma conta foi encontrada! Crie uma conta primeiro!");
+                    }
+                    break;
+                case 5:
+                    if (account != null) {
+                        System.out.println("Informe quanto deseja sacar: ");
+                        account.sacar(account, scan.nextDouble());
+                    } else {
+                        System.out.println("Nenhuma conta foi encontrada! Crie uma conta primeiro!");
+                    }
+                    break;
+                case 6:
+                    System.out.println("Opção em construção");
+                    break;
+                case 0:
+                    System.out.println("Finalizando...");
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+            }
 
+        } while (option != 0);
 
     }
 

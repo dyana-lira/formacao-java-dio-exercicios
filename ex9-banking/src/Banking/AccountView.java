@@ -4,12 +4,13 @@ public class AccountView {
 
     //métodos de consulta
     public static void visaoGeral(Banking account) {
+        System.out.println("=================VISÃO GERAL=================");
         System.out.printf("ACCOUNT ID: %s\n", account.getNumberAccount());
-        System.out.printf("SALDO ATUAL: %s\n", account.getSaldo());
-        System.out.printf("LIMITE DE CHEQUE ESPECIAL: %s\n", account.getChequeEspecial());
-        System.out.printf("CHEQUE ESPECIAL UTILIZADO: %s\n", account.getChequeEspecialUsado());
-        System.out.printf("DESCONTO SOBRE CHEQUE ESPECIAL UTILIZADO: %s\n", account.getChequeEspecialUsado() * 0.20);
-        //System.out.printf("\n", );
+        System.out.printf("SALDO ATUAL: %.2f\n", account.getSaldo());
+        System.out.printf("LIMITE DE CHEQUE ESPECIAL: %.2f\n", account.getChequeEspecial());
+        System.out.printf("CHEQUE ESPECIAL UTILIZADO: %.2f\n", account.getChequeEspecialUsado());
+        System.out.printf("DESCONTO SOBRE CHEQUE ESPECIAL UTILIZADO: %.2f\n", account.getChequeEspecialUsado() * 0.20);
+        System.out.println("=============================================");
         //System.out.printf("\n", );
         //System.out.printf("\n", );
     }
