@@ -41,10 +41,11 @@ public class App {
             System.out.println("===============MENU===============");
             System.out.println("1 - Criar conta");
             System.out.println("2 - Acessar conta");
-            System.out.println("3 - Consultar Cheque Especial");
-            System.out.println("4 - Depositar");
-            System.out.println("5 - Sacar");
-            System.out.println("6 - Pagar boleto");
+            System.out.println("4 - Consultar saldo");
+            System.out.println("5 - Consultar Cheque Especial");
+            System.out.println("6 - Depositar");
+            System.out.println("7 - Sacar");
+            System.out.println("8 - Pagar boleto");
             System.out.println("0 - Sair");
 
             option = scan.nextInt();
@@ -55,14 +56,21 @@ public class App {
                     System.out.println("Conta Criada com Sucesso!");
                     AccountView.visaoGeral(account);
                     break;
-                case 3:
+                case 4:
+                    if (account != null) {
+                        AccountView.consultarSaldo(account);
+                    } else {
+                        System.out.println("Nenhuma conta foi encontrada! Crie uma conta primeiro!");
+                    }
+                    break;
+                case 5:
                     if (account != null) {
                         AccountView.consultarChequeEspecial(account);
                     } else {
                         System.out.println("Nenhuma conta foi encontrada! Crie uma conta primeiro!");
                     }
                     break;
-                case 4:
+                case 6:
                     if (account != null) {
                         System.out.println("Informe o valor do depósito: ");
                         account.depositar(account, scan.nextDouble());
@@ -70,7 +78,7 @@ public class App {
                         System.out.println("Nenhuma conta foi encontrada! Crie uma conta primeiro!");
                     }
                     break;
-                case 5:
+                case 7:
                     if (account != null) {
                         System.out.println("Informe quanto deseja sacar: ");
                         account.sacar(account, scan.nextDouble());
@@ -78,7 +86,7 @@ public class App {
                         System.out.println("Nenhuma conta foi encontrada! Crie uma conta primeiro!");
                     }
                     break;
-                case 6:
+                case 8:
                     System.out.println("Opção em construção");
                     break;
                 case 0:
