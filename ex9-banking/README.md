@@ -20,14 +20,16 @@ Siga as seguintes regras para implementar:
 ```mermaid
 stateDiagram
   direction LR
-  [*] --> App
+  [*] --> exNumber_Name 
+  exNumber_Name --> /src
+  exNumber_Name --> README 
   /src --> BankingDescription
+  /src --> App
   BankingDescription --> AccountView
   BankingDescription --> Banking
   BankingDescription --> BankingServiceNT
   BankingDescription --> UserNT
-  exNumber_Name --> README
-  README --> Descricao
+  README --> Descricao 
 
   Descricao:Enunciado + Solução comentada
   BankingDescription:Banking (package)
